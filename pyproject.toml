@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "chainmapping"
+version = "0.1.0"
+description = "Simple class to create readonly ChainMaps that support typing,Mapping"
+authors = ["Kalle M. Aagaard <km@conscia.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+isort = "^5.12.0"
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.3.1"
+pytest-cov = "^4.1.0"
+
+
+[tool.pytest.ini_options]
+addopts = "-v --cov=chainmapping --cov-report=xml --cov-report=term"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
