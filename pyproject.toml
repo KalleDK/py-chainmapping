@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "chainmapping"
-version = "0.1.0"
+version = "0.1.1"
 description = "Simple class to create readonly ChainMaps that support typing,Mapping"
 authors = ["Kalle M. Aagaard <km@conscia.com>"]
 readme = "README.md"
