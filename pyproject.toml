@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "chainmapping"
-version = "0.1.1"
-description = "Simple class to create readonly ChainMaps that support typing,Mapping"
+version = "0.1.2"
+description = "Simple class to create readonly ChainMaps that support typing.Mapping"
 authors = ["Kalle M. Aagaard <km@conscia.com>"]
 readme = "README.md"
 
@@ -12,12 +12,10 @@ python = "^3.9"
 black = "^23.3.0"
 isort = "^5.12.0"
 
-[tool.poetry.group.test]
-optional = true
-
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
 pytest-cov = "^4.1.0"
+
 
 
 [tool.pytest.ini_options]
