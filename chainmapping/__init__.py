@@ -1,8 +1,4 @@
-from typing import (
-    Mapping,
-    TypeVar,
-    overload,
-)
+from typing import Mapping, TypeVar, overload
 
 _Key_T = TypeVar("_Key_T")
 _Value_U = TypeVar("_Value_U")
@@ -18,7 +14,7 @@ class ChainMapping(Mapping[_Key_T, _Value_U]):
     state.
 
     Lookups search the underlying mappings successively until a key is found.
-   
+
 
     """
 
@@ -41,14 +37,20 @@ class ChainMapping(Mapping[_Key_T, _Value_U]):
         return self.__missing__(key)  # support subclasses that define __missing__
 
     @overload
-    def get(self, key: _Key_T, default: None = ...) -> _Value_U | None: # pragma: no cover
+    def get(
+        self, key: _Key_T, default: None = ...
+    ) -> _Value_U | None:  # pragma: no cover
         ...
 
     @overload
-    def get(self, key: _Key_T, default: _Default_V) -> _Value_U | _Default_V: # pragma: no cover
+    def get(
+        self, key: _Key_T, default: _Default_V
+    ) -> _Value_U | _Default_V:  # pragma: no cover
         ...
 
-    def get(self, key: _Key_T, default: _Default_V | None = None) -> _Default_V | _Value_U | None:
+    def get(
+        self, key: _Key_T, default: _Default_V | None = None
+    ) -> _Default_V | _Value_U | None:
         return self[key] if key in self else default
 
     def new_child(self, map: Mapping[_Key_T, _Value_U]):
