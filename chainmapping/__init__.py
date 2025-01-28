@@ -44,7 +44,7 @@ class ChainMapping(Mapping[_Key_T, _Value_U]):
     def get(self, key: _Key_T, default: _Default_V) -> Union[_Value_U, _Default_V]:  # pragma: no cover
         ...
 
-    def get(self, key: _Key_T, default: _Default_V | None = None) -> Union[_Default_V, _Value_U, None]:
+    def get(self, key: _Key_T, default: Optional[_Default_V] = None) -> Union[_Default_V, _Value_U, None]:
         return self[key] if key in self else default
 
     def new_child(self, map: Mapping[_Key_T, _Value_U]):
