@@ -2,7 +2,7 @@
 
 [project]
 name = "chainmapping"
-version = "0.1.4"
+version = "0.1.5"
 description = "Simple class to create readonly ChainMaps that support typing.Mapping"
 authors = [{ name = "Kalle M. Aagaard", email = "git@k-moeller.dk" }]
 readme = "README.md"
