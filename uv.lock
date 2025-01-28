@@ -3,7 +3,7 @@ requires-python = ">=3.9"
 
 [[package]]
 name = "chainmapping"
-version = "0.1.5"
+version = "1.0.0"
 source = { editable = "." }
 
 [package.dev-dependencies]
