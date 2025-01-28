@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+
+vars:
+  SHELL: '{{if eq .OS "Windows_NT"}}powershell{{end}}'
+
+tasks:
+  sync:
+    cmds:
+      - uv sync
+  publish:
+    deps:
+      - build
+    cmds:
+      - uv publish --keyring-provider=subprocess --username=__token__
+      - git push
+  build:
+    cmds:
+      - '{{.SHELL}} rm -r {{if eq .OS "Windows_NT"}}-Force{{else}}-f{{end}} dist'
+      - uv build
+  release:
+    cmds:
+      - bump-my-version bump patch
+      - task: sync
+      - task: publish
+  devrel:
+    cmds:
+      - git add .
+      - if git commit --dry-run --short; then git commit -m "devrel"; else echo nothing changed; fi
+      - bump-my-version bump build
+      - task: sync
+      - task: publish

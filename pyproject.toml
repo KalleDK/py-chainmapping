@@ -1,27 +1,38 @@
-[tool.poetry]
+#:schema https://json.schemastore.org/pyproject.json
+
+[project]
 name = "chainmapping"
 version = "0.1.3"
 description = "Simple class to create readonly ChainMaps that support typing.Mapping"
-authors = ["Kalle M. Aagaard <km@conscia.com>"]
+authors = [{ name = "Kalle M. Aagaard", email = "git@k-moeller.dk" }]
 readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT" 
+license-files = ["LICENSE"]
 
-[tool.poetry.dependencies]
-python = "^3.9"
+[project.urls]
+Repository = "https://github.com/KalleDK/py-chainmapping"
 
-[tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
-isort = "^5.12.0"
+[tool.ruff]
+line-length = 120
+target-version = "py39"
 
-[tool.poetry.group.test.dependencies]
-pytest = "^7.3.1"
-pytest-cov = "^4.1.0"
+[tool.pyright]
+include = ["src", "tests"]
 
 [tool.pytest.ini_options]
 addopts = "-v --cov=chainmapping --cov-report=xml --cov-report=term"
 
-[tool.isort]
-profile = "black"
-
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+tools = [
+    "pyright>=1.1.392.post0",
+    "ruff>=0.9.3",
+]
+test = [
+    "pytest>=8.3.4",
+    "pytest-coverage>=0.0",
+]
